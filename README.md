@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# devstudio · landing v2
 
-## Getting Started
+Editorial landing page for **devstudio**, a four-person software studio based in Tegucigalpa / Remote LATAM. Built with Next.js 16, React 19, Tailwind v4, and motion.
 
-First, run the development server:
+> _Software que mueve tu negocio._
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## What's inside
+
+| Section | Description |
+|---|---|
+| **01 — Hero** | Giant clamp-sized headline with parallax + scroll-driven scale; full-bleed photo slab |
+| **03 — Servicios** | Five numbered service rows with hover-invert and 3D slide-in |
+| **04 — Proceso** | Dark four-column grid (Análisis · Diseño · Desarrollo · Entrega) with rotateX flip |
+| **05 — Beneficios** | Three animated stats with bouncy easing (CountUp on view) |
+| **06 — Stack** | Four marquees of tech names that respond to scroll velocity |
+| **07 — Equipo** | Four-member team grid (Camilo, Daniel, Jafeth, Edgardo) with photo avatars |
+| **08 — Voces** | Featured testimonial + 3-column quotes grid with 3D tilt |
+| **09 — Contacto** | Final CTA with split-words headline |
+| **Footer** | Oversized "devstudio." headline with scroll-scale, contact, nav, social, newsletter |
+| **Chat (FAB)** | Floating chat widget proxied to an n8n webhook for lead capture |
+
+All scroll animations **replay** every time an element enters the viewport (not single-fire) and respect `prefers-reduced-motion`.
+
+---
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- React 19
+- TypeScript 5 (strict mode)
+- [Tailwind CSS v4](https://tailwindcss.com) (CSS-first `@theme` config)
+- [motion](https://motion.dev) (formerly Framer Motion) for animations
+- [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) — Geist Sans, Geist Mono, Inter
+
+---
+
+## Project structure
+
+```
+src/
+├── app/
+│   ├── api/chat/route.ts      # n8n webhook proxy
+│   ├── globals.css             # Tailwind v4 @theme tokens
+│   ├── layout.tsx              # Fonts + html shell
+│   └── page.tsx                # Composes all sections
+├── components/
+│   ├── chat/
+│   │   └── ChatButton.tsx      # Floating chat FAB + panel
+│   ├── layout/
+│   │   ├── Container.tsx       # Editorial max-width wrapper
+│   │   ├── Eyebrow.tsx         # Mono uppercase caption
+│   │   └── Section.tsx
+│   ├── motion/
+│   │   ├── CountUp.tsx         # Number animation on view
+│   │   ├── Marquee.tsx         # Velocity-driven horizontal scroll
+│   │   ├── Reveal.tsx          # Fade + slide + scale + blur
+│   │   ├── ScrollParallax.tsx  # Y translation tied to scroll
+│   │   ├── ScrollScale.tsx     # In/out scale through viewport
+│   │   └── SplitWords.tsx      # Per-word 3D flip stagger
+│   └── sections/               # Hero, Nav, Services, Process,
+│                               # Benefits, TechStack, Team,
+│                               # Testimonials, FinalCTA, Footer
+└── lib/
+    └── cn.ts                    # className helper
+public/
+├── images/hero.jpg              # Hero photo
+└── teams/1-4.png                # Member avatars
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- Node.js 20+ (LTS recommended)
+- npm 10+
 
-To learn more about Next.js, take a look at the following resources:
+### Install & run
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Vercel
+### Available scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Script | What it does |
+|---|---|
+| `npm run dev` | Start the dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm start` | Run the production build locally |
+| `npm run lint` | ESLint |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Environment variables
+
+Copy `env.example` to `.env.local` and fill in:
+
+| Var | Required | Description |
+|---|---|---|
+| `N8N_WEBHOOK_URL` | optional | URL of the n8n workflow that handles chat messages. If unset, the widget shows a friendly fallback. |
+| `N8N_WEBHOOK_TOKEN` | optional | Bearer token forwarded as `Authorization` header to the n8n webhook. |
+
+### Chat webhook contract
+
+The `/api/chat` route forwards each user message to your n8n workflow:
+
+**Request body** (POST):
+```json
+{
+  "sessionId": "abc123",
+  "message": "Hola, quiero una cotización",
+  "history": [
+    { "role": "user", "content": "..." },
+    { "role": "assistant", "content": "..." }
+  ],
+  "source": "devstudio-landing"
+}
+```
+
+**Expected response**:
+```json
+{ "reply": "..." }
+```
+or `{ "output": "..." }` (compatible with n8n's *Respond to Webhook* node default).
+
+---
+
+## Design system
+
+Tailwind v4 tokens defined in `src/app/globals.css`:
+
+| Token | Value | Use |
+|---|---|---|
+| `--color-paper` | `#ffffff` | Light backgrounds |
+| `--color-ink` | `#1a1a1a` | Primary text + dark sections |
+| `--color-ink-soft` | `#333333` | Soft dark |
+| `--color-muted` | `#666666` | Secondary text on light bg |
+| `--color-muted-soft` | `#999999` | Tertiary text on dark bg |
+| `--font-display` | Geist Sans | Big headlines |
+| `--font-sans` | Inter | Body |
+| `--font-mono` | Geist Mono | Eyebrows + captions |
+| `--container-editorial` | `90rem` | Editorial max width |
+| `--tracking-mono` | `0.16em` | Mono caption tracking |
+
+---
+
+## Deploying
+
+This project is deploy-ready for [Vercel](https://vercel.com). After connecting the repo:
+
+1. Set `N8N_WEBHOOK_URL` (and optionally `N8N_WEBHOOK_TOKEN`) in **Project Settings → Environment Variables**.
+2. Push to `main` → Vercel deploys.
+
+---
+
+## Team
+
+- [Camilo Henríquez](#) — Full Stack · AI Tooling
+- [Daniel Brizuela](#) — Full Stack
+- [Jafeth Ventura](#) — Mobile Developer
+- [Edgardo Wilchez](#) — Mobile · Frontend
+
+---
+
+## License
+
+Private — © 2026 Devstudio. All rights reserved.
