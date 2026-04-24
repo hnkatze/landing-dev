@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
@@ -12,6 +13,7 @@ type Member = {
   initials: string;
   role: string;
   tag: string;
+  avatar: string;
 };
 
 const team: Member[] = [
@@ -21,6 +23,7 @@ const team: Member[] = [
     initials: "CH",
     role: "Full Stack",
     tag: "AI TOOLING",
+    avatar: "/teams/1.png",
   },
   {
     n: "02",
@@ -28,6 +31,7 @@ const team: Member[] = [
     initials: "DB",
     role: "Full Stack",
     tag: "WEB / API",
+    avatar: "/teams/2.png",
   },
   {
     n: "03",
@@ -35,6 +39,7 @@ const team: Member[] = [
     initials: "JV",
     role: "Mobile Developer",
     tag: "iOS / ANDROID",
+    avatar: "/teams/3.png",
   },
   {
     n: "04",
@@ -42,6 +47,7 @@ const team: Member[] = [
     initials: "EW",
     role: "Mobile · Frontend",
     tag: "RN / WEB",
+    avatar: "/teams/4.png",
   },
 ];
 
@@ -110,8 +116,8 @@ export function Team() {
                   07 / {m.n}
                 </span>
 
-                {/* Initials block — geometric */}
-                <div className="relative">
+                {/* Avatar block — square with photo */}
+                <div className="relative w-fit">
                   <motion.div
                     initial={{ scale: 0.9 }}
                     whileInView={{ scale: 1 }}
@@ -122,17 +128,33 @@ export function Team() {
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     className={[
-                      "size-24 md:size-28 lg:size-32",
-                      "bg-ink text-paper group-hover:bg-paper group-hover:text-ink",
-                      "flex items-center justify-center",
-                      "font-display font-semibold tracking-[-0.04em] leading-none",
-                      "text-4xl md:text-5xl lg:text-6xl",
+                      "relative size-24 md:size-28 lg:size-32",
+                      "bg-ink overflow-hidden",
                       "transition-all duration-500",
                       "group-hover:rotate-[-6deg] group-hover:scale-105",
                       "will-change-transform origin-bottom-left",
                     ].join(" ")}
                   >
-                    {m.initials}
+                    <Image
+                      src={m.avatar}
+                      alt={`Foto de ${m.name}`}
+                      fill
+                      sizes="(min-width: 1024px) 8rem, (min-width: 768px) 7rem, 6rem"
+                      className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                    />
+                    {/* Initials overlay — visible by default, fades on hover */}
+                    <span
+                      aria-hidden
+                      className={[
+                        "absolute inset-0 flex items-center justify-center",
+                        "font-display font-semibold tracking-[-0.04em] leading-none",
+                        "text-4xl md:text-5xl lg:text-6xl text-paper",
+                        "bg-ink/55 mix-blend-multiply",
+                        "opacity-100 group-hover:opacity-0 transition-opacity duration-500",
+                      ].join(" ")}
+                    >
+                      {m.initials}
+                    </span>
                   </motion.div>
 
                   {/* Decorative offset square */}
