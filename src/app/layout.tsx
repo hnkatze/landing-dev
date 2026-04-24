@@ -23,7 +23,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "devstudio. — Software que mueve tu negocio",
   description:
-    "Agencia de software en Tegucigalpa / Remoto LATAM. Construimos productos digitales a medida: web, móvil, escritorio y automatización.",
+    "Agencia de software en San Pedro Sula / Remoto LATAM. Construimos productos digitales a medida: web, móvil, escritorio y automatización.",
 };
 
 export default function RootLayout({
