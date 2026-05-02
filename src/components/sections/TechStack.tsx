@@ -19,7 +19,7 @@ export function TechStack() {
       <Container>
         <Reveal y={30} blur={4} scale={0.95}>
           <Eyebrow className="block text-center mb-6">
-            06 — STACK — CON QUÉ CONSTRUIMOS
+            07 — STACK — CON QUÉ CONSTRUIMOS
           </Eyebrow>
         </Reveal>
 

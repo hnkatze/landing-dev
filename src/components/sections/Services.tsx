@@ -9,28 +9,33 @@ import { ScrollScale } from "@/components/motion/ScrollScale";
 const services = [
   {
     n: "01",
-    title: "Desarrollo web",
-    desc: "Frontend y backend a medida con stacks robustos y modernos.",
+    title: "Producto a medida",
+    desc: "Web, móvil y escritorio construidos para tu negocio. De cero a producción con stacks modernos.",
   },
   {
     n: "02",
+    title: "SaaS propios",
+    desc: "Vendemos producto final ya listo: licencias y suscripciones para problemas comunes.",
+  },
+  {
+    n: "03",
     title: "Backend & APIs",
     desc: "APIs, microservicios e integraciones para conectar tus sistemas.",
   },
   {
-    n: "03",
+    n: "04",
     title: "Apps móviles",
     desc: "Aplicaciones nativas y multiplataforma para iOS y Android.",
   },
   {
-    n: "04",
-    title: "Escritorio",
-    desc: "Herramientas de escritorio multiplataforma listas para producción.",
+    n: "05",
+    title: "Automatización & IA",
+    desc: "n8n, Zapier, bots y workflows con IA que ahorran horas cada semana.",
   },
   {
-    n: "05",
-    title: "Automatización",
-    desc: "n8n, Zapier, bots y workflows que ahorran horas cada semana.",
+    n: "06",
+    title: "Tutorías & charlas",
+    desc: "Mentorías 1:1, formación a equipos y charlas técnicas en empresas, universidades y eventos.",
   },
 ];
 
@@ -56,29 +61,19 @@ export function Services() {
         </ScrollScale>
       </Container>
 
-      <ul className="border-t border-ink [perspective:1200px]">
+      <ul className="border-t border-ink">
         {services.map((s, i) => (
           <motion.li
             key={s.n}
-            initial={{
-              opacity: 0,
-              x: i % 2 === 0 ? -100 : 100,
-              rotateY: i % 2 === 0 ? -25 : 25,
-              filter: "blur(8px)",
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-              rotateY: 0,
-              filter: "blur(0px)",
-            }}
+            initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ margin: "-15% 0px -15% 0px" }}
             transition={{
-              duration: 0.85,
-              delay: reduce ? 0 : i * 0.06,
+              duration: 0.7,
+              delay: reduce ? 0 : i * 0.05,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="border-b border-ink will-change-transform"
+            className="border-b border-ink"
           >
             <a
               href="#contacto"

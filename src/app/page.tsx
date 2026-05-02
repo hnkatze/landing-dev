@@ -1,6 +1,8 @@
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
+import { EditorialDivider } from "@/components/sections/EditorialDivider";
+import { Projects } from "@/components/sections/Projects";
 import { Process } from "@/components/sections/Process";
 import { Benefits } from "@/components/sections/Benefits";
 import { TechStack } from "@/components/sections/TechStack";
@@ -16,6 +18,8 @@ export default function Home() {
       <Nav />
       <Hero />
       <Services />
+      <EditorialDivider />
+      <Projects />
       <Process />
       <Benefits />
       <TechStack />

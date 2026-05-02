@@ -62,7 +62,7 @@ export function Team() {
       <Container>
         <Reveal y={30} blur={4} scale={0.95}>
           <Eyebrow className="block text-center mb-6">
-            07 — EQUIPO — QUIÉNES SOMOS
+            08 — EQUIPO — QUIÉNES SOMOS
           </Eyebrow>
         </Reveal>
 
@@ -82,57 +82,35 @@ export function Team() {
           </p>
         </Reveal>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink/15 border border-ink/15 [perspective:1500px]">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink/15 border border-ink/15">
           {team.map((m, i) => (
             <motion.li
               key={m.n}
-              initial={{
-                opacity: 0,
-                y: 80,
-                rotateX: -30,
-                rotateY: i % 2 === 0 ? -15 : 15,
-                scale: 0.9,
-                filter: "blur(8px)",
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                rotateX: 0,
-                rotateY: 0,
-                scale: 1,
-                filter: "blur(0px)",
-              }}
+              initial={{ opacity: 0, y: 50, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ margin: "-10% 0px -10% 0px" }}
               transition={{
-                duration: 0.85,
-                delay: reduce ? 0 : i * 0.12,
+                duration: 0.7,
+                delay: reduce ? 0 : i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="bg-paper will-change-transform group"
+              className="bg-paper group"
             >
               <article className="relative h-full p-8 md:p-10 lg:p-12 flex flex-col gap-6 md:gap-8 overflow-hidden transition-colors duration-500 group-hover:bg-ink group-hover:text-paper">
                 {/* Number top-right */}
                 <span className="absolute top-6 right-6 md:top-8 md:right-8 font-mono text-[11px] tracking-[var(--tracking-mono)] uppercase text-muted group-hover:text-muted-soft transition-colors duration-500">
-                  07 / {m.n}
+                  08 / {m.n}
                 </span>
 
                 {/* Avatar block — square with photo */}
                 <div className="relative w-fit">
-                  <motion.div
-                    initial={{ scale: 0.9 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ margin: "-10% 0px" }}
-                    transition={{
-                      duration: 0.8,
-                      delay: reduce ? 0 : i * 0.12 + 0.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
+                  <div
                     className={[
                       "relative size-24 md:size-28 lg:size-32",
                       "bg-ink overflow-hidden",
-                      "transition-all duration-500",
+                      "transition-transform duration-500",
                       "group-hover:rotate-[-6deg] group-hover:scale-105",
-                      "will-change-transform origin-bottom-left",
+                      "origin-bottom-left",
                     ].join(" ")}
                   >
                     <Image
@@ -155,7 +133,7 @@ export function Team() {
                     >
                       {m.initials}
                     </span>
-                  </motion.div>
+                  </div>
 
                   {/* Decorative offset square */}
                   <span

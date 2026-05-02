@@ -9,8 +9,10 @@ type RevealProps = {
   className?: string;
   as?: "div" | "section" | "article" | "li" | "span";
   y?: number;
+  /** kept for API compat — ignored, blur is too expensive across many elements */
   blur?: number;
   scale?: number;
+  /** kept for API compat — ignored, rotate forces extra layer */
   rotate?: number;
 };
 
@@ -19,10 +21,8 @@ export function Reveal({
   delay = 0,
   className,
   as = "div",
-  y = 60,
-  blur = 12,
-  scale = 0.9,
-  rotate = 0,
+  y = 40,
+  scale = 1,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
   const inView = useInView(ref, { margin: "-15% 0px -15% 0px" });
@@ -36,14 +36,10 @@ export function Reveal({
   return (
     <Tag
       ref={ref as never}
-      initial={{ opacity: 0, y, scale, filter: `blur(${blur}px)`, rotate }}
-      animate={
-        inView
-          ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", rotate: 0 }
-          : { opacity: 0, y, scale, filter: `blur(${blur}px)`, rotate }
-      }
+      initial={{ opacity: 0, y, scale }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y, scale }}
       transition={{
-        duration: 0.9,
+        duration: 0.7,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}

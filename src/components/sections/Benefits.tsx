@@ -15,19 +15,33 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    display: <CountUp to={40} prefix="+" suffix="H" />,
-    cap: "AHORRO MENSUAL",
-    body: "Ahorro de horas operativas cada mes con flujos automatizados (n8n, Zapier, bots).",
+    display: (
+      <span className="inline-flex items-baseline gap-2 whitespace-nowrap">
+        <CountUp to={12} prefix="+" />
+        <span className="text-[0.4em] font-mono tracking-[var(--tracking-mono)] uppercase opacity-70">
+          AÑOS
+        </span>
+      </span>
+    ),
+    cap: "EXPERIENCIA COMBINADA",
+    body: "Suma de años de los integrantes del equipo construyendo producto, web, móvil y backend.",
   },
   {
-    display: <CountUp to={10} suffix="X" />,
-    cap: "ESCALABILIDAD",
-    body: "Backend y APIs preparados para crecer junto a tu base de usuarios.",
+    display: (
+      <span className="inline-flex items-baseline gap-2 whitespace-nowrap">
+        <CountUp to={40} prefix="+" />
+        <span className="text-[0.4em] font-mono tracking-[var(--tracking-mono)] uppercase opacity-70">
+          HRS/MES
+        </span>
+      </span>
+    ),
+    cap: "AHORRO OPERATIVO",
+    body: "Horas operativas ahorradas cada mes con flujos automatizados (n8n, Zapier, IA, bots).",
   },
   {
-    display: <span>24/7</span>,
+    display: <span className="whitespace-nowrap">24/7</span>,
     cap: "DISPONIBILIDAD",
-    body: "Apps móviles para que tu producto esté siempre en el bolsillo del cliente.",
+    body: "Producto SaaS, apps móviles y soporte para que tu negocio nunca se detenga.",
   },
 ];
 
@@ -39,7 +53,7 @@ export function Benefits() {
       <Container>
         <Reveal y={30} blur={4} scale={0.95}>
           <Eyebrow className="block text-center mb-6">
-            05 — BENEFICIOS — POR QUÉ NOSOTROS
+            06 — BENEFICIOS — POR QUÉ NOSOTROS
           </Eyebrow>
         </Reveal>
 
@@ -56,15 +70,15 @@ export function Benefits() {
           {stats.map((s, i) => (
             <motion.li
               key={i}
-              initial={{ opacity: 0, scale: 0.4, y: 60, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, scale: 0.85, y: 40 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ margin: "-10% 0px -10% 0px" }}
               transition={{
-                duration: 0.9,
-                delay: reduce ? 0 : i * 0.18,
-                ease: [0.34, 1.56, 0.64, 1],
+                duration: 0.7,
+                delay: reduce ? 0 : i * 0.12,
+                ease: [0.34, 1.4, 0.64, 1],
               }}
-              className="flex flex-col gap-6 will-change-transform"
+              className="flex flex-col gap-6"
             >
               <div
                 className="font-display font-semibold leading-none tracking-[-0.04em]"

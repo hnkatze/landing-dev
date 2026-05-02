@@ -4,7 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitWords } from "@/components/motion/SplitWords";
-import { ScrollScale } from "@/components/motion/ScrollScale";
+import { CipherText } from "@/components/motion/CipherText";
 
 export function FinalCTA() {
   return (
@@ -12,7 +12,7 @@ export function FinalCTA() {
       <Container>
         <Reveal y={30} blur={4} scale={0.95}>
           <Eyebrow tone="invert" className="block text-center mb-12">
-            09  /  CONTACTO  /  HABLEMOS
+            10  /  CONTACTO  /  HABLEMOS
           </Eyebrow>
         </Reveal>
 
@@ -38,13 +38,15 @@ export function FinalCTA() {
               href="mailto:hola@devstudio.dev"
               className="group font-mono text-sm tracking-[0.12em] uppercase inline-flex items-center gap-2 transition-all duration-300 hover:text-paper/70 hover:-translate-y-0.5"
             >
-              → SOLICITAR COTIZACIÓN
+              <span aria-hidden>→</span>
+              <CipherText text="SOLICITAR COTIZACIÓN" duration={650} />
             </a>
             <a
               href="#contacto"
               className="group font-mono text-sm tracking-[0.12em] uppercase inline-flex items-center gap-2 text-muted-soft hover:text-paper transition-all duration-300 hover:-translate-y-0.5"
             >
-              AGENDAR LLAMADA →
+              <CipherText text="AGENDAR LLAMADA" duration={650} />
+              <span aria-hidden>→</span>
             </a>
           </div>
         </Reveal>

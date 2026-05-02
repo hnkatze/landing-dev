@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Container } from "@/components/layout/Container";
+import { CipherText } from "@/components/motion/CipherText";
 import { cn } from "@/lib/cn";
 
 const links = [
   { label: "SERVICIOS", href: "#servicios" },
+  { label: "PROYECTOS", href: "#proyectos" },
   { label: "PROCESO", href: "#proceso" },
   { label: "EQUIPO", href: "#equipo" },
   { label: "CONTACTO", href: "#contacto" },
@@ -49,18 +51,18 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="font-mono text-[11px] tracking-[var(--tracking-mono)] uppercase hover:opacity-60 transition-opacity"
+                className="group font-mono text-[11px] tracking-[var(--tracking-mono)] uppercase transition-opacity hover:opacity-100"
               >
-                {l.label}
+                <CipherText text={l.label} duration={500} />
               </a>
             ))}
           </nav>
 
           <a
             href="#contacto"
-            className="hidden md:flex items-center gap-1.5 font-mono text-[11px] tracking-[var(--tracking-mono)] uppercase hover:opacity-60 transition-opacity"
+            className="group hidden md:flex items-center gap-1.5 font-mono text-[11px] tracking-[var(--tracking-mono)] uppercase transition-opacity"
           >
-            AGENDAR
+            <CipherText text="AGENDAR" duration={500} />
             <ArrowUpRight />
           </a>
 

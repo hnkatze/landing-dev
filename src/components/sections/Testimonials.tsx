@@ -8,25 +8,25 @@ import { ScrollScale } from "@/components/motion/ScrollScale";
 
 const featured = {
   quote:
-    "Automatizaron procesos que antes nos llevaban días enteros. Ahora todo corre solo y el equipo se enfoca en lo que importa.",
-  author: "MARÍA GONZÁLEZ  /  COO, LOGÍSTICA ANDES",
+    "Pasamos de tener apenas presencia en redes a un sitio que nos llega clientes nuevos cada semana. La gente nos encuentra en Google buscando taller mecánico en San Pedro Sula y termina escribiéndonos directo.",
+  author: "GERARDO SÁNCHEZ  /  PROPIETARIO, TALLER GERARDITO",
 };
 
 const cols = [
   {
     quote:
-      "Lanzaron nuestra app móvil en 8 semanas y la calidad superó expectativas.",
-    author: "DIEGO RAMÍREZ  /  FOUNDER, FITTRACK",
+      "Acá en Bonito Oriental el boca a boca era todo lo que teníamos. Ahora la gente nos encuentra por internet, ve los trabajos en la galería y ya nos llaman seguros de que sabemos lo que hacemos.",
+    author: "HECTOR HENRÍQUEZ  /  PROPIETARIO, TALLER LOS CAMILOS",
   },
   {
     quote:
-      "Su equipo se siente como una extensión del nuestro. Recomendados al 100%.",
-    author: "LUCÍA PÉREZ  /  CTO, NIMBUS",
+      "Necesitábamos una plataforma que reflejara el peso de nuestra labor social. Entendieron la causa y entregaron algo limpio, escalable y fácil de mantener.",
+    author: "DIRECCIÓN  /  HONDURAS SOCIAL",
   },
   {
     quote:
-      "Entregaron a tiempo y con calidad. Comunicación impecable durante todo el proyecto.",
-    author: "CARLOS MEJÍA  /  CEO, ANDA",
+      "Tener un portal donde yo misma puedo subir productos, cambiar precios y manejar el catálogo me cambió la vida. Ya no dependo de nadie para actualizar la tienda.",
+    author: "FUNDADORA  /  SCRUNSHES HN",
   },
 ];
 
@@ -38,7 +38,7 @@ export function Testimonials() {
       <Container>
         <Reveal y={30} blur={4} scale={0.95}>
           <Eyebrow className="block text-center mb-12 md:mb-16">
-            08  /  CLIENTES  /  LO QUE DICEN
+            09  /  CLIENTES  /  LO QUE DICEN
           </Eyebrow>
         </Reveal>
 
@@ -65,31 +65,19 @@ export function Testimonials() {
           </blockquote>
         </Reveal>
 
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-20 md:mt-28 [perspective:1200px]">
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-20 md:mt-28">
           {cols.map((c, i) => (
             <motion.li
               key={i}
-              initial={{
-                opacity: 0,
-                y: 80,
-                rotateZ: i % 2 === 0 ? -4 : 4,
-                rotateY: i % 2 === 0 ? -20 : 20,
-                filter: "blur(8px)",
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                rotateZ: 0,
-                rotateY: 0,
-                filter: "blur(0px)",
-              }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ margin: "-10% 0px -10% 0px" }}
               transition={{
-                duration: 0.85,
-                delay: reduce ? 0 : i * 0.15,
+                duration: 0.7,
+                delay: reduce ? 0 : i * 0.12,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="flex flex-col gap-6 will-change-transform"
+              className="flex flex-col gap-6"
             >
               <motion.div
                 initial={{ scaleX: 0 }}

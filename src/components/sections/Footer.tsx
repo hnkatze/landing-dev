@@ -1,17 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScrollScale } from "@/components/motion/ScrollScale";
 
-const nav = ["Servicios", "Proceso", "Equipo", "Contacto"];
+const nav = ["Servicios", "Proyectos", "Proceso", "Equipo", "Contacto"];
 const social = ["Twitter / X", "LinkedIn", "GitHub", "Instagram"];
 const legal = ["Privacidad", "Términos", "Cookies"];
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-paper pt-24 md:pt-32 pb-10 overflow-x-clip">
+    <footer className="relative bg-ink text-paper pt-24 md:pt-32 pb-10 overflow-x-clip">
+      <div className="pointer-events-none absolute inset-0 -z-0 opacity-[0.08] mix-blend-screen">
+        <Image
+          src="/media/luis-desiro-w5g1TpAMD4I-unsplash.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-right"
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 -z-0 bg-gradient-to-r from-ink via-ink/95 to-ink/70" />
       <Container>
         <ScrollScale from={0.6} to={1.15} fromOpacity={0.2} toOpacity={1}>
           <h2
@@ -33,7 +44,7 @@ export function Footer() {
             </a>
             <span className="text-sm text-muted-soft">+504 9999-0000</span>
             <span className="text-sm text-muted-soft">
-              Tegucigalpa · Remoto LATAM
+              San Pedro Sula · Remoto LATAM
             </span>
           </Reveal>
 

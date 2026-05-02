@@ -37,7 +37,7 @@ export function Process() {
       <Container>
         <Reveal y={30} blur={4} scale={0.95}>
           <Eyebrow tone="invert" className="block text-center mb-6">
-            04  ·  PROCESO  ·  CÓMO TRABAJAMOS
+            05  ·  PROCESO  ·  CÓMO TRABAJAMOS
           </Eyebrow>
         </Reveal>
 
@@ -50,31 +50,19 @@ export function Process() {
           </h2>
         </ScrollScale>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-paper/30 [perspective:1500px]">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-paper/30">
           {steps.map((s, i) => (
             <motion.li
               key={s.n}
-              initial={{
-                opacity: 0,
-                y: 80,
-                rotateX: -45,
-                scale: 0.8,
-                filter: "blur(10px)",
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                rotateX: 0,
-                scale: 1,
-                filter: "blur(0px)",
-              }}
+              initial={{ opacity: 0, y: 50, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ margin: "-10% 0px -10% 0px" }}
               transition={{
-                duration: 0.9,
-                delay: reduce ? 0 : i * 0.15,
+                duration: 0.7,
+                delay: reduce ? 0 : i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative p-8 md:p-10 min-h-[260px] md:min-h-[320px] flex flex-col justify-between border-b border-paper/30 lg:border-b-0 md:[&:nth-child(odd)]:border-r md:[&:nth-child(odd)]:border-paper/30 lg:border-r lg:border-paper/30 lg:last:border-r-0 will-change-transform origin-top"
+              className="relative p-8 md:p-10 min-h-[260px] md:min-h-[320px] flex flex-col justify-between border-b border-paper/30 lg:border-b-0 md:[&:nth-child(odd)]:border-r md:[&:nth-child(odd)]:border-paper/30 lg:border-r lg:border-paper/30 lg:last:border-r-0"
             >
               <span className="font-mono text-3xl">{s.n}</span>
               <div className="flex flex-col gap-3">
