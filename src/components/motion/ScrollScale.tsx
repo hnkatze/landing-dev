@@ -28,6 +28,7 @@ export function ScrollScale({
 }: ScrollScaleProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const reduce = useReducedMotion();
+  const wrapperClassName = ["relative", className].filter(Boolean).join(" ");
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -42,7 +43,7 @@ export function ScrollScale({
 
   if (reduce) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={wrapperClassName}>
         {children}
       </div>
     );
@@ -52,7 +53,7 @@ export function ScrollScale({
     <motion.div
       ref={ref}
       style={{ scale, opacity }}
-      className={className}
+      className={wrapperClassName}
     >
       {children}
     </motion.div>

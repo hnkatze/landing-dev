@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import type Lenis from "lenis";
+import { useCallback, useEffect, useState } from "react";
+import { useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import { Container } from "@/components/layout/Container";
 import { CipherText } from "@/components/motion/CipherText";
@@ -17,13 +19,34 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const updateFromWindow = useCallback(() => {
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+
+    setScrolled(window.scrollY > 12);
+    setScrollProgress(Math.min(1, Math.max(0, progress)));
+  }, []);
+
+  const updateFromLenis = useCallback((lenis: Lenis) => {
+    setScrolled(lenis.scroll > 12);
+    setScrollProgress(Math.min(1, Math.max(0, lenis.progress)));
+  }, []);
+
+  useLenis(updateFromLenis);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const frame = requestAnimationFrame(updateFromWindow);
+    window.addEventListener("scroll", updateFromWindow, { passive: true });
+    window.addEventListener("resize", updateFromWindow);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateFromWindow);
+      window.removeEventListener("resize", updateFromWindow);
+    };
+  }, [updateFromWindow]);
 
   return (
     <motion.header
@@ -31,7 +54,7 @@ export function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-colors duration-300",
+        "sticky top-0 z-50 w-full border-b transition-colors duration-300 relative",
         scrolled
           ? "bg-paper/85 backdrop-blur-md border-ink/10"
           : "bg-transparent border-transparent",
@@ -121,6 +144,12 @@ export function Nav() {
           </div>
         </motion.div>
       </Container>
+
+      <motion.span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-ink/80"
+        style={{ scaleX: scrollProgress }}
+      />
     </motion.header>
   );
 }

@@ -25,6 +25,7 @@ export function ScrollParallax({
 }: ScrollParallaxProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const reduce = useReducedMotion();
+  const wrapperClassName = ["relative", className].filter(Boolean).join(" ");
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -39,7 +40,7 @@ export function ScrollParallax({
 
   if (reduce) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={wrapperClassName}>
         {children}
       </div>
     );
@@ -49,7 +50,7 @@ export function ScrollParallax({
     <motion.div
       ref={ref}
       style={{ y, scale: scaleTo !== undefined ? scale : undefined }}
-      className={className}
+      className={wrapperClassName}
     >
       {children}
     </motion.div>

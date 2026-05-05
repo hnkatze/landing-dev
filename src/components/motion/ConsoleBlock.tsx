@@ -46,17 +46,14 @@ export function ConsoleBlock({ className = "" }: { className?: string }) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (reduce) {
-      setRendered(SCENES[0]);
-      return;
-    }
+    if (reduce) return;
 
     const scene = SCENES[sceneIdx];
 
     if (phase === "typing") {
       const line = scene[typingIdx];
       if (!line) {
-        setPhase("hold");
+        timerRef.current = setTimeout(() => setPhase("hold"), 0);
         return;
       }
       if (typingText.length < line.text.length) {
@@ -89,7 +86,8 @@ export function ConsoleBlock({ className = "" }: { className?: string }) {
   }, [phase, typingText, typingIdx, sceneIdx, reduce]);
 
   const scene = SCENES[sceneIdx];
-  const currentLine = scene[typingIdx];
+  const currentLine = reduce ? undefined : scene[typingIdx];
+  const visibleRendered = reduce ? SCENES[0] : rendered;
 
   return (
     <div
@@ -101,7 +99,7 @@ export function ConsoleBlock({ className = "" }: { className?: string }) {
         "w-[19rem] sm:w-[20rem] min-h-[10.25rem] sm:min-h-[10.75rem]",
         "shadow-[0_12px_32px_-8px_rgba(0,0,0,0.25)]",
         "transition-opacity",
-        phase === "fading" ? "opacity-0" : "opacity-100",
+        !reduce && phase === "fading" ? "opacity-0" : "opacity-100",
         className,
       ].join(" ")}
       style={{ transitionDuration: `${FADE_MS}ms` }}
@@ -118,7 +116,7 @@ export function ConsoleBlock({ className = "" }: { className?: string }) {
       </div>
 
       {/* Lines already typed */}
-      {rendered.map((l, i) => (
+      {visibleRendered.map((l, i) => (
         <Row key={i} line={l} />
       ))}
 
@@ -131,7 +129,7 @@ export function ConsoleBlock({ className = "" }: { className?: string }) {
       )}
 
       {/* Idle cursor when scene finished typing */}
-      {phase === "hold" && (
+      {!reduce && phase === "hold" && (
         <div className="flex gap-2">
           <span className="text-paper/40">$</span>
           <span className="inline-block w-2 h-3 bg-paper/80 align-middle animate-blink" />
