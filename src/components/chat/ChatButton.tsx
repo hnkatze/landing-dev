@@ -41,11 +41,10 @@ export function ChatButton() {
   }, [open, messages]);
 
   useEffect(() => {
-    if (open) {
-      setUnread(false);
-      const t = setTimeout(() => inputRef.current?.focus(), 200);
-      return () => clearTimeout(t);
-    }
+    if (!open) return;
+
+    const t = setTimeout(() => inputRef.current?.focus(), 200);
+    return () => clearTimeout(t);
   }, [open]);
 
   useEffect(() => {
@@ -104,7 +103,10 @@ export function ChatButton() {
         aria-label={open ? "Cerrar chat" : "Abrir chat con devstudio"}
         aria-expanded={open}
         aria-controls="chat-panel"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          setOpen((o) => !o);
+          setUnread(false);
+        }}
         initial={reduce ? false : { scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -153,6 +155,7 @@ export function ChatButton() {
             id="chat-panel"
             role="dialog"
             aria-label="Chat con devstudio"
+            data-lenis-prevent
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.96 }}
@@ -191,6 +194,7 @@ export function ChatButton() {
 
             <div
               ref={scrollRef}
+              data-lenis-prevent
               className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3"
             >
               {messages.map((m) => (
