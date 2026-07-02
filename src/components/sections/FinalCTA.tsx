@@ -35,7 +35,7 @@ export function FinalCTA() {
         <Reveal delay={0.4} y={40} blur={4} scale={0.95}>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
             <a
-              href="mailto:hola@devstudio.dev"
+              href="mailto:hola@flujoo.dev"
               className="group font-mono text-sm tracking-[0.12em] uppercase inline-flex items-center gap-2 transition-all duration-300 hover:text-paper/70 hover:-translate-y-0.5"
             >
               <span aria-hidden>→</span>

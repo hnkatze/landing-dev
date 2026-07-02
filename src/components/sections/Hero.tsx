@@ -13,6 +13,7 @@ import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitWords } from "@/components/motion/SplitWords";
 import { CipherText } from "@/components/motion/CipherText";
+import { cdn } from "@/lib/cdn";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -52,10 +53,10 @@ export function Hero() {
             style={{ fontSize: "clamp(2.75rem, 11vw, 9rem)" }}
           >
             <span className="block">
-              <SplitWords text="Software que mueve" />
+              <SplitWords text="Automatización e IA" />
             </span>
             <span className="block">
-              <SplitWords text="tu negocio." delay={0.2} />
+              <SplitWords text="para tu negocio." delay={0.2} />
               <span
                 aria-hidden
                 className="inline-block align-middle ml-2 md:ml-4 w-[0.08em] h-[0.7em] bg-ink animate-blink translate-y-[-0.05em]"
@@ -76,9 +77,10 @@ export function Hero() {
 
           <Reveal delay={0.1} y={40} blur={6} scale={0.95}>
             <p className="text-base leading-relaxed text-ink max-w-md">
-              Construimos productos digitales a medida y SaaS propios: web,
-              móvil, escritorio y automatización. También damos tutorías y
-              charlas. Equipo pequeño, criterio grande.
+              Diseñamos flujos de automatización, agentes de IA y servidores
+              MCP para tu operación. También construimos software a medida
+              —web, móvil y escritorio— y damos tutorías y charlas. Equipo
+              pequeño, criterio grande.
             </p>
           </Reveal>
 
@@ -100,8 +102,8 @@ export function Hero() {
           className="relative h-[260px] sm:h-[340px] md:h-[420px] lg:h-[520px] will-change-transform"
         >
           <Image
-            src="/media/altumcode-P2SkP_PXhlU-unsplash.jpg"
-            alt="Espacio de trabajo del equipo de devstudio"
+            src={cdn("/media/altumcode-P2SkP_PXhlU-unsplash.jpg")}
+            alt="Espacio de trabajo del estudio"
             fill
             priority
             sizes="100vw"

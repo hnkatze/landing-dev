@@ -111,7 +111,7 @@ export function ConsoleBlock({ className = "" }: { className?: string }) {
         <span className="size-1.5 rounded-full bg-paper/30" />
         <span className="size-1.5 rounded-full bg-paper/30" />
         <span className="ml-2 text-[9px] tracking-[var(--tracking-mono)] uppercase text-paper/40">
-          devstudio · live
+          flujoo · live
         </span>
       </div>
 

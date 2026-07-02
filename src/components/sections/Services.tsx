@@ -9,31 +9,36 @@ import { ScrollScale } from "@/components/motion/ScrollScale";
 const services = [
   {
     n: "01",
-    title: "Producto a medida",
-    desc: "Web, móvil y escritorio construidos para tu negocio. De cero a producción con stacks modernos.",
-  },
-  {
-    n: "02",
-    title: "SaaS propios",
-    desc: "Vendemos producto final ya listo: licencias y suscripciones para problemas comunes.",
-  },
-  {
-    n: "03",
-    title: "Backend & APIs",
-    desc: "APIs, microservicios e integraciones para conectar tus sistemas.",
-  },
-  {
-    n: "04",
-    title: "Apps móviles",
-    desc: "Aplicaciones nativas y multiplataforma para iOS y Android.",
-  },
-  {
-    n: "05",
     title: "Automatización & IA",
     desc: "n8n, Zapier, bots y workflows con IA que ahorran horas cada semana.",
   },
   {
+    n: "02",
+    title: "Agentes & MCPs",
+    desc: "Agentes de IA a medida y servidores MCP: integraciones con Claude, OpenAI y chatbots que capturan leads.",
+  },
+  {
+    n: "03",
+    title: "Producto a medida",
+    desc: "Web, móvil y escritorio construidos para tu negocio. De cero a producción con stacks modernos.",
+  },
+  {
+    n: "04",
+    title: "SaaS propios",
+    desc: "Vendemos producto final ya listo: licencias y suscripciones para problemas comunes.",
+  },
+  {
+    n: "05",
+    title: "Backend & APIs",
+    desc: "APIs, microservicios e integraciones para conectar tus sistemas.",
+  },
+  {
     n: "06",
+    title: "Apps móviles",
+    desc: "Aplicaciones nativas y multiplataforma para iOS y Android.",
+  },
+  {
+    n: "07",
     title: "Tutorías & charlas",
     desc: "Mentorías 1:1, formación a equipos y charlas técnicas en empresas, universidades y eventos.",
   },

@@ -4,6 +4,7 @@ import type Lenis from "lenis";
 import { useCallback, useEffect, useState } from "react";
 import { useLenis } from "lenis/react";
 import { motion } from "motion/react";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { Container } from "@/components/layout/Container";
 import { CipherText } from "@/components/motion/CipherText";
 import { cn } from "@/lib/cn";
@@ -63,9 +64,9 @@ export function Nav() {
       <Container>
         <div className="flex items-center justify-between py-4 md:py-6">
           <a href="#" className="flex items-center gap-2">
-            <span className="block size-3 bg-ink" aria-hidden />
+            <BrandMark className="h-7 md:h-8 w-auto" />
             <span className="font-mono text-[11px] tracking-[var(--tracking-mono)] uppercase font-medium">
-              DEVSTUDIO
+              FLUJOO
             </span>
           </a>
 

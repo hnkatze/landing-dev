@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         sessionId: body.sessionId,
         message: lastUserMsg.content,
         history: body.messages,
-        source: "devstudio-landing",
+        source: "flujoo-landing",
       }),
     });
 

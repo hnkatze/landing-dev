@@ -1,8 +1,8 @@
-# devstudio · landing v2
+# flujoo · landing v2
 
-Editorial landing page for **devstudio**, a four-person software studio based in Tegucigalpa / Remote LATAM. Built with Next.js 16, React 19, Tailwind v4, and motion.
+Editorial landing page for **flujoo**, a software studio based in San Pedro Sula / Remote LATAM focused on automation flows, AI agents, MCP servers, and custom software. Built with Next.js 16, React 19, Tailwind v4, and motion.
 
-> _Software que mueve tu negocio._
+> _Automatización e IA para tu negocio._
 
 ---
 
@@ -11,14 +11,14 @@ Editorial landing page for **devstudio**, a four-person software studio based in
 | Section | Description |
 |---|---|
 | **01 — Hero** | Giant clamp-sized headline with parallax + scroll-driven scale; full-bleed photo slab |
-| **03 — Servicios** | Five numbered service rows with hover-invert and 3D slide-in |
+| **03 — Servicios** | Numbered service rows (automatización, agentes & MCPs, producto a medida, etc.) with hover-invert and 3D slide-in |
 | **04 — Proceso** | Dark four-column grid (Análisis · Diseño · Desarrollo · Entrega) with rotateX flip |
 | **05 — Beneficios** | Three animated stats with bouncy easing (CountUp on view) |
-| **06 — Stack** | Four marquees of tech names that respond to scroll velocity |
-| **07 — Equipo** | Four-member team grid (Camilo, Daniel, Jafeth, Edgardo) with photo avatars |
+| **06 — Stack** | Marquees of tech names, including MCP / Agentes IA / Claude / OpenAI, that respond to scroll velocity |
+| **07 — Equipo** | Four-member team grid (role-led, avatars only) with illustrated avatars |
 | **08 — Voces** | Featured testimonial + 3-column quotes grid with 3D tilt |
 | **09 — Contacto** | Final CTA with split-words headline |
-| **Footer** | Oversized "devstudio." headline with scroll-scale, contact, nav, social, newsletter |
+| **Footer** | Oversized "flujoo." headline with scroll-scale, contact, nav, newsletter |
 | **Chat (FAB)** | Floating chat widget proxied to an n8n webhook for lead capture |
 
 All scroll animations **replay** every time an element enters the viewport (not single-fire) and respect `prefers-reduced-motion`.
@@ -65,8 +65,9 @@ src/
 └── lib/
     └── cn.ts                    # className helper
 public/
+├── brand/logo.png               # flujoo wordmark logo
 ├── images/hero.jpg              # Hero photo
-└── teams/1-4.png                # Member avatars
+└── teams/1-4.png                # Team avatars (illustrated, anonymized)
 ```
 
 ---
@@ -120,7 +121,7 @@ The `/api/chat` route forwards each user message to your n8n workflow:
     { "role": "user", "content": "..." },
     { "role": "assistant", "content": "..." }
   ],
-  "source": "devstudio-landing"
+  "source": "flujoo-landing"
 }
 ```
 
@@ -162,13 +163,10 @@ This project is deploy-ready for [Vercel](https://vercel.com). After connecting 
 
 ## Team
 
-- [Camilo Henríquez](#) — Full Stack · AI Tooling
-- [Daniel Brizuela](#) — Full Stack
-- [Jafeth Ventura](#) — Mobile Developer
-- [Edgardo Wilchez](#) — Mobile · Frontend
+Four people, no intermediaries — team identities are kept anonymized on the public site for legal reasons. Roles: Full Stack, Full Stack, Mobile Developer, Mobile · Frontend.
 
 ---
 
 ## License
 
-Private — © 2026 Devstudio. All rights reserved.
+Private — © 2026 flujoo. All rights reserved.

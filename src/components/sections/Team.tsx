@@ -6,11 +6,10 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScrollScale } from "@/components/motion/ScrollScale";
+import { cdn } from "@/lib/cdn";
 
 type Member = {
   n: string;
-  name: string;
-  initials: string;
   role: string;
   tag: string;
   avatar: string;
@@ -19,35 +18,27 @@ type Member = {
 const team: Member[] = [
   {
     n: "01",
-    name: "Camilo Henríquez",
-    initials: "CH",
     role: "Full Stack",
     tag: "AI TOOLING",
-    avatar: "/teams/1.png",
+    avatar: cdn("/teams/1.png"),
   },
   {
     n: "02",
-    name: "Daniel Brizuela",
-    initials: "DB",
     role: "Full Stack",
     tag: "WEB / API",
-    avatar: "/teams/2.png",
+    avatar: cdn("/teams/2.png"),
   },
   {
     n: "03",
-    name: "Jafeth Ventura",
-    initials: "JV",
     role: "Mobile Developer",
     tag: "iOS / ANDROID",
-    avatar: "/teams/3.png",
+    avatar: cdn("/teams/3.png"),
   },
   {
     n: "04",
-    name: "Edgardo Wilchez",
-    initials: "EW",
     role: "Mobile · Frontend",
     tag: "RN / WEB",
-    avatar: "/teams/4.png",
+    avatar: cdn("/teams/4.png"),
   },
 ];
 
@@ -115,12 +106,12 @@ export function Team() {
                   >
                     <Image
                       src={m.avatar}
-                      alt={`Foto de ${m.name}`}
+                      alt={`Avatar ilustrado del integrante ${m.n}`}
                       fill
                       sizes="(min-width: 1024px) 8rem, (min-width: 768px) 7rem, 6rem"
                       className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
                     />
-                    {/* Initials overlay — visible by default, fades on hover */}
+                    {/* Member number overlay — visible by default, fades on hover */}
                     <span
                       aria-hidden
                       className={[
@@ -131,7 +122,7 @@ export function Team() {
                         "opacity-100 group-hover:opacity-0 transition-opacity duration-500",
                       ].join(" ")}
                     >
-                      {m.initials}
+                      {m.n}
                     </span>
                   </div>
 
@@ -142,19 +133,16 @@ export function Team() {
                   />
                 </div>
 
-                {/* Name */}
+                {/* Role */}
                 <div className="flex flex-col gap-3 mt-auto">
                   <h3
                     className="font-display font-semibold tracking-[-0.02em] leading-[1.05]"
                     style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
                   >
-                    {m.name}
+                    {m.role}
                   </h3>
 
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span className="text-base md:text-lg leading-tight">
-                      {m.role}
-                    </span>
                     <span className="font-mono text-[10px] tracking-[var(--tracking-mono)] uppercase px-2.5 py-1 border border-current opacity-70">
                       {m.tag}
                     </span>

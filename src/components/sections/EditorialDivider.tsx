@@ -15,6 +15,7 @@ import {
 import { useCallback, useRef } from "react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
+import { cdn } from "@/lib/cdn";
 
 const words = ["IDEA", "CODIGO", "PRODUCTO", "IMPACTO"];
 
@@ -126,7 +127,7 @@ function DesktopKineticScene() {
           className="absolute inset-0 will-change-transform"
         >
           <Image
-            src="/media/josep-martins-zuiQPl0mEhs-unsplash.jpg"
+            src={cdn("/media/josep-martins-zuiQPl0mEhs-unsplash.jpg")}
             alt=""
             fill
             sizes="100vw"
@@ -222,7 +223,7 @@ function MobileProcessScene() {
     <section className="relative bg-ink text-paper overflow-hidden xl:hidden">
       <div className="absolute inset-0">
         <Image
-          src="/media/josep-martins-zuiQPl0mEhs-unsplash.jpg"
+          src={cdn("/media/josep-martins-zuiQPl0mEhs-unsplash.jpg")}
           alt=""
           fill
           sizes="100vw"
@@ -325,7 +326,7 @@ function ProcessWindow({
       <div className="grid gap-px bg-paper/14 md:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[240px] bg-ink md:min-h-[260px]">
           <Image
-            src="/media/james-mckinven-B3FwR-Hf9w8-unsplash.jpg"
+            src={cdn("/media/james-mckinven-B3FwR-Hf9w8-unsplash.jpg")}
             alt="Workspace visual for the devstudio process"
             fill
             sizes="(min-width: 1280px) 42vw, 100vw"

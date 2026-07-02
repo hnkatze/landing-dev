@@ -6,6 +6,7 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScrollScale } from "@/components/motion/ScrollScale";
+import { cdn } from "@/lib/cdn";
 
 type Project = {
   n: string;
@@ -31,7 +32,7 @@ const projects: Project[] = [
     display: "tallergerardito.com",
     scope: "WEB · SEO · LEADS",
     year: "2025",
-    image: "/projects/tallergerardito.jpg",
+    image: cdn("/projects/tallergerardito.jpg"),
   },
   {
     n: "02",
@@ -43,7 +44,7 @@ const projects: Project[] = [
     display: "tallerloscamilos.com",
     scope: "WEB · CATÁLOGO",
     year: "2025",
-    image: "/projects/tallerloscamilos.jpg",
+    image: cdn("/projects/tallerloscamilos.jpg"),
   },
   {
     n: "03",
@@ -55,7 +56,7 @@ const projects: Project[] = [
     display: "hondurassocial.org",
     scope: "ONG · CONTENIDO",
     year: "2025",
-    image: "/projects/hondurassocial.jpg",
+    image: cdn("/projects/hondurassocial.jpg"),
   },
   {
     n: "04",
@@ -67,7 +68,7 @@ const projects: Project[] = [
     display: "scrunsheshn.com",
     scope: "E-COMMERCE · ADMIN",
     year: "2025",
-    image: "/projects/scrunsheshn.jpg",
+    image: cdn("/projects/scrunsheshn.jpg"),
   },
 ];
 

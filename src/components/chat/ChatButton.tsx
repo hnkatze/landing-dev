@@ -16,7 +16,7 @@ const INITIAL_MSG: Msg = {
   id: "welcome",
   role: "assistant",
   content:
-    "Hola 👋 soy el asistente de devstudio. Contame brevemente qué necesitás y te conecto con el equipo.",
+    "Hola 👋 soy el asistente de flujoo. Contame brevemente qué necesitás y te conecto con el equipo.",
 };
 
 function uid() {
@@ -100,7 +100,7 @@ export function ChatButton() {
       {/* Floating button */}
       <motion.button
         type="button"
-        aria-label={open ? "Cerrar chat" : "Abrir chat con devstudio"}
+        aria-label={open ? "Cerrar chat" : "Abrir chat con flujoo"}
         aria-expanded={open}
         aria-controls="chat-panel"
         onClick={() => {
@@ -154,7 +154,7 @@ export function ChatButton() {
           <motion.div
             id="chat-panel"
             role="dialog"
-            aria-label="Chat con devstudio"
+            aria-label="Chat con flujoo"
             data-lenis-prevent
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -177,7 +177,7 @@ export function ChatButton() {
                 />
                 <div className="flex flex-col">
                   <span className="font-mono text-[10px] tracking-[var(--tracking-mono)] uppercase text-muted-soft">
-                    devstudio · asistente
+                    flujoo · asistente
                   </span>
                   <span className="text-sm font-medium">Estamos en línea</span>
                 </div>

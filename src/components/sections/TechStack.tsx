@@ -11,6 +11,7 @@ const rows = [
   { text: "Python / Go / Postgres / MongoDB / Redis / Docker", velocity: 20 },
   { text: "Flutter / React Native / Swift / Kotlin / Electron", velocity: -18 },
   { text: "AWS / GCP / Kubernetes / n8n / Zapier / OpenAI", velocity: 22 },
+  { text: "MCP / Agentes IA / Claude / LangChain / Vector DBs", velocity: -20 },
 ];
 
 export function TechStack() {

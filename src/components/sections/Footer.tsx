@@ -1,21 +1,26 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScrollScale } from "@/components/motion/ScrollScale";
+import { cdn } from "@/lib/cdn";
 
 const nav = ["Servicios", "Proyectos", "Proceso", "Equipo", "Contacto"];
-const social = ["Twitter / X", "LinkedIn", "GitHub", "Instagram"];
-const legal = ["Privacidad", "Términos", "Cookies"];
+const legal = [
+  { label: "Privacidad", href: "/privacidad" },
+  { label: "Términos", href: "/terminos" },
+];
 
 export function Footer() {
   return (
     <footer className="relative bg-ink text-paper pt-24 md:pt-32 pb-10 overflow-x-clip">
       <div className="pointer-events-none absolute inset-0 -z-0 opacity-[0.08] mix-blend-screen">
         <Image
-          src="/media/luis-desiro-w5g1TpAMD4I-unsplash.jpg"
+          src={cdn("/media/luis-desiro-w5g1TpAMD4I-unsplash.jpg")}
           alt=""
           fill
           sizes="100vw"
@@ -26,23 +31,26 @@ export function Footer() {
       <Container>
         <ScrollScale from={0.6} to={1.15} fromOpacity={0.2} toOpacity={1}>
           <h2
-            className="font-display font-semibold text-center leading-none tracking-[-0.05em] mb-16 md:mb-24 break-all text-paper"
+            className="flex items-center justify-center gap-[0.12em] font-display font-semibold text-center leading-none tracking-[-0.05em] mb-16 md:mb-24 text-paper"
             style={{ fontSize: "clamp(4rem, 18vw, 13rem)" }}
           >
-            devstudio.
+            <BrandMark
+              color="var(--color-paper)"
+              className="h-[0.78em] w-auto shrink-0"
+            />
+            flujoo.
           </h2>
         </ScrollScale>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 pt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-10 pt-10">
           <Reveal className="flex flex-col gap-4">
             <Eyebrow tone="invert">01  contacto</Eyebrow>
             <a
-              href="mailto:hola@devstudio.dev"
+              href="mailto:hola@flujoo.dev"
               className="font-medium text-paper hover:opacity-70 transition-opacity"
             >
-              hola@devstudio.dev
+              hola@flujoo.dev
             </a>
-            <span className="text-sm text-muted-soft">+504 9999-0000</span>
             <span className="text-sm text-muted-soft">
               San Pedro Sula · Remoto LATAM
             </span>
@@ -61,21 +69,8 @@ export function Footer() {
             ))}
           </Reveal>
 
-          <Reveal delay={0.1} className="flex flex-col gap-3.5">
-            <Eyebrow tone="invert">03  social</Eyebrow>
-            {social.map((s) => (
-              <a
-                key={s}
-                href="#"
-                className="text-sm text-paper hover:opacity-70 transition-opacity w-fit"
-              >
-                {s}
-              </a>
-            ))}
-          </Reveal>
-
-          <Reveal delay={0.15} className="flex flex-col gap-4">
-            <Eyebrow tone="invert">04  newsletter</Eyebrow>
+          <Reveal delay={0.1} className="flex flex-col gap-4">
+            <Eyebrow tone="invert">03  newsletter</Eyebrow>
             <p className="text-sm text-paper leading-relaxed max-w-[28ch]">
               Una vez al mes. Sin ruido.
             </p>
@@ -110,18 +105,18 @@ export function Footer() {
 
         <div className="mt-20 pt-6 border-t border-paper/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <span className="font-mono text-[11px] tracking-[0.1em] text-muted">
-            © 2026 Devstudio · Todos los derechos reservados
+            © 2026 flujoo · Todos los derechos reservados
           </span>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             {legal.map((l) => (
-              <a
-                key={l}
-                href="#"
+              <Link
+                key={l.href}
+                href={l.href}
                 className="font-mono text-[11px] tracking-[0.1em] uppercase hover:opacity-70 transition-opacity"
               >
-                {l}
-              </a>
+                {l.label}
+              </Link>
             ))}
             <a
               href="#top"
