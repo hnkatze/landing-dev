@@ -319,7 +319,7 @@ function ProcessWindow({
         <span className="size-2 rounded-full bg-amber-300/75" />
         <span className="size-2 rounded-full bg-emerald-300/75" />
         <span className="ml-3 truncate font-mono text-[10px] uppercase tracking-[var(--tracking-mono)] text-paper/50">
-          devstudio/process-live
+          flujoo/process-live
         </span>
       </div>
 
@@ -327,7 +327,7 @@ function ProcessWindow({
         <div className="relative min-h-[240px] bg-ink md:min-h-[260px]">
           <Image
             src={cdn("/media/james-mckinven-B3FwR-Hf9w8-unsplash.jpg")}
-            alt="Workspace visual for the devstudio process"
+            alt="Espacio de trabajo del proceso del estudio"
             fill
             sizes="(min-width: 1280px) 42vw, 100vw"
             className="object-cover grayscale"
