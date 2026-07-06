@@ -4,9 +4,10 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 
 export const metadata: Metadata = {
-  title: "Privacidad — flujoo",
+  title: "Privacidad",
   description:
     "Política de privacidad de flujoo: qué datos recopilamos a través del chat y el newsletter, cómo los usamos y tus derechos.",
+  alternates: { canonical: "/privacidad" },
   robots: { index: true, follow: true },
 };
 

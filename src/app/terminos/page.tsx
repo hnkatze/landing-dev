@@ -4,9 +4,10 @@ import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 
 export const metadata: Metadata = {
-  title: "Términos — flujoo",
+  title: "Términos",
   description:
     "Términos y condiciones de uso de flujoo: servicios ofrecidos, uso del sitio, propiedad intelectual y responsabilidad.",
+  alternates: { canonical: "/terminos" },
   robots: { index: true, follow: true },
 };
 

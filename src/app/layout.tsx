@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import "./globals.css";
@@ -27,9 +27,16 @@ const title = "flujoo — Automatización, agentes de IA y software a medida";
 const description =
   "Estudio de software en San Pedro Sula para todo LATAM. Diseñamos flujos de automatización, construimos agentes de IA y servidores MCP, y desarrollamos productos web y móviles a medida.";
 
+export const viewport: Viewport = {
+  themeColor: "#1a1a1a",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
+  title: {
+    default: title,
+    template: "%s — flujoo",
+  },
   description,
   keywords: [
     "automatización de procesos",
@@ -74,26 +81,39 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "flujoo",
-  url: siteUrl,
-  email: "hola@flujoo.dev",
-  logo: cdn("/brand/logo.png"),
-  description,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "San Pedro Sula",
-    addressCountry: "HN",
-  },
-  areaServed: "Latin America",
-  knowsAbout: [
-    "automatización",
-    "agentes de IA",
-    "MCP",
-    "desarrollo web",
-    "desarrollo móvil",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#organization`,
+      name: "flujoo",
+      url: siteUrl,
+      email: "hola@flujoo.dev",
+      logo: cdn("/brand/logo.png"),
+      description,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "San Pedro Sula",
+        addressCountry: "HN",
+      },
+      areaServed: "Latin America",
+      knowsAbout: [
+        "automatización",
+        "agentes de IA",
+        "MCP",
+        "desarrollo web",
+        "desarrollo móvil",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "flujoo",
+      inLanguage: "es",
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
   ],
 };
 
@@ -110,7 +130,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <LenisProvider>{children}</LenisProvider>
       </body>
