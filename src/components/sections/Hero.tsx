@@ -7,13 +7,41 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
-import { Reveal } from "@/components/motion/Reveal";
-import { SplitWords } from "@/components/motion/SplitWords";
 import { CipherText } from "@/components/motion/CipherText";
 import { cdn } from "@/lib/cdn";
+
+// CSS-driven variant of SplitWords for above-the-fold content: the words
+// are visible in the server HTML and animate at first paint instead of
+// waiting for hydration (keeps LCP early).
+function HeroWords({
+  text,
+  delay = 0,
+  stagger = 0.06,
+}: {
+  text: string;
+  delay?: number;
+  stagger?: number;
+}) {
+  const words = text.split(" ");
+  // The space must live OUTSIDE the overflow wrapper: trailing whitespace
+  // inside an inline-block is collapsed by the browser.
+  return words.map((word, i) => (
+    <Fragment key={`${word}-${i}`}>
+      <span className="inline-block overflow-hidden align-bottom pb-[0.12em]">
+        <span
+          className="hero-word"
+          style={{ animationDelay: `${delay + i * stagger}s` }}
+        >
+          {word}
+        </span>
+      </span>
+      {i < words.length - 1 ? " " : null}
+    </Fragment>
+  ));
+}
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -53,10 +81,10 @@ export function Hero() {
             style={{ fontSize: "clamp(2.75rem, 11vw, 9rem)" }}
           >
             <span className="block">
-              <SplitWords text="Automatización e IA" />
+              <HeroWords text="Automatización e IA" />
             </span>
             <span className="block">
-              <SplitWords text="para tu negocio." delay={0.2} />
+              <HeroWords text="para tu negocio." delay={0.2} />
               <span
                 aria-hidden
                 className="inline-block align-middle ml-2 md:ml-4 w-[0.08em] h-[0.7em] bg-ink animate-blink translate-y-[-0.05em]"
@@ -68,23 +96,23 @@ export function Hero() {
 
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 py-10 md:py-16 border-t border-ink/10">
-          <Reveal y={40} blur={6} scale={0.95}>
+          <div className="hero-fade-up">
             <div className="flex flex-col gap-2">
               <Eyebrow>NOTA DEL EQUIPO</Eyebrow>
               <Eyebrow>N°01</Eyebrow>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.1} y={40} blur={6} scale={0.95}>
+          <div className="hero-fade-up" style={{ animationDelay: "0.1s" }}>
             <p className="text-base leading-relaxed text-ink max-w-md">
               Diseñamos flujos de automatización, agentes de IA y servidores
               MCP para tu operación. También construimos software a medida
               —web, móvil y escritorio— y damos tutorías y charlas. Equipo
               pequeño, criterio grande.
             </p>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.2} y={40} blur={6} scale={0.95}>
+          <div className="hero-fade-up" style={{ animationDelay: "0.2s" }}>
             <a
               href="#contacto"
               className="group flex items-center gap-2 md:justify-end text-sm font-medium hover:opacity-60 transition-opacity"
@@ -92,7 +120,7 @@ export function Hero() {
               <CipherText text="SOLICITAR COTIZACIÓN" duration={650} />
               <ArrowRight className="transition-transform group-hover:translate-x-1" />
             </a>
-          </Reveal>
+          </div>
         </div>
       </Container>
 

@@ -35,6 +35,41 @@
   to { transform: translate3d(0, 0, 0); }
 }
 
+/* CSS-only hero entrance: runs at first paint without waiting for JS
+   hydration, so the headline is an early LCP candidate. */
+@keyframes hero-word-rise {
+  from {
+    transform: translateY(120%) rotateX(-50deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+.hero-word {
+  display: inline-block;
+  transform-origin: bottom;
+  will-change: transform;
+  animation: hero-word-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-fade-up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hero-fade-up {
+  animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 html {
   scroll-behavior: auto;
   scroll-padding-top: 5rem;
