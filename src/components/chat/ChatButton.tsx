@@ -260,10 +260,6 @@ export function ChatButton() {
                 <SendIcon />
               </button>
             </form>
-
-            <p className="px-5 pb-3 text-[10px] font-mono tracking-[0.1em] uppercase text-muted text-center">
-              Powered by n8n · respuestas pueden no ser instantáneas
-            </p>
           </motion.div>
         )}
       </AnimatePresence>
