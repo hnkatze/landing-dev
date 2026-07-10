@@ -15,8 +15,8 @@ const featured = {
 const cols = [
   {
     quote:
-      "Acá en Bonito Oriental el boca a boca era todo lo que teníamos. Ahora la gente nos encuentra por internet, ve los trabajos en la galería y ya nos llaman seguros de que sabemos lo que hacemos.",
-    author: "HECTOR HENRÍQUEZ  /  PROPIETARIO, TALLER LOS CAMILOS",
+      "Acá el boca a boca era todo lo que teníamos. Ahora la gente nos encuentra por internet, ve los trabajos en la galería y ya nos llaman seguros de que sabemos lo que hacemos.",
+    author: "DANILO TOLEDO  /  PROPIETARIO, TALLER LOS CAMILOS",
   },
   {
     quote:
