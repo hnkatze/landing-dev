@@ -72,3 +72,7 @@ $RECYCLE.BIN/
 .cache
 .parcel-cache
 .turbo
+.claude/
+claude-rules.json
+.mcp.json
+claude-rules.lock.json
