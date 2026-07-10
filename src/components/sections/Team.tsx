@@ -20,25 +20,31 @@ const team: Member[] = [
     n: "01",
     role: "Full Stack",
     tag: "AI TOOLING",
-    avatar: cdn("/teams/1.png"),
+    avatar: cdn("/personajes/1.png"),
   },
   {
     n: "02",
     role: "Full Stack",
     tag: "WEB / API",
-    avatar: cdn("/teams/2.png"),
+    avatar: cdn("/personajes/2.png"),
   },
   {
     n: "03",
     role: "Mobile Developer",
     tag: "iOS / ANDROID",
-    avatar: cdn("/teams/3.png"),
+    avatar: cdn("/personajes/3.png"),
   },
   {
     n: "04",
     role: "Mobile · Frontend",
     tag: "RN / WEB",
-    avatar: cdn("/teams/4.png"),
+    avatar: cdn("/personajes/4.png"),
+  },
+  {
+    n: "05",
+    role: "Delivery Lead",
+    tag: "PM / QA",
+    avatar: cdn("/personajes/5.png"),
   },
 ];
 
@@ -68,7 +74,7 @@ export function Team() {
 
         <Reveal delay={0.15} y={30} blur={4} scale={0.95}>
           <p className="max-w-xl mx-auto text-center text-base md:text-lg leading-relaxed text-muted mb-16 md:mb-24">
-            Cuatro personas, cero intermediarios. Hablás directo con quien
+            Cinco personas, cero intermediarios. Hablás directo con quien
             construye tu producto.
           </p>
         </Reveal>
@@ -85,7 +91,12 @@ export function Team() {
                 delay: reduce ? 0 : i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="bg-paper group"
+              className={[
+                "bg-paper group",
+                team.length % 2 === 1 && i === team.length - 1
+                  ? "md:col-span-2"
+                  : "",
+              ].join(" ")}
             >
               <article className="relative h-full p-8 md:p-10 lg:p-12 flex flex-col gap-6 md:gap-8 overflow-hidden transition-colors duration-500 group-hover:bg-ink group-hover:text-paper">
                 {/* Number top-right */}
