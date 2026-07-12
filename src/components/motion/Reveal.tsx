@@ -25,7 +25,7 @@ export function Reveal({
   scale = 1,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { margin: "-15% 0px -15% 0px" });
+  const inView = useInView(ref, { once: true, margin: "-15% 0px -15% 0px" });
   const reduce = useReducedMotion();
   const Tag = motion[as];
 

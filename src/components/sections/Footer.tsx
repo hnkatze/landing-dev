@@ -6,7 +6,6 @@ import { BrandMark } from "@/components/layout/BrandMark";
 import { Container } from "@/components/layout/Container";
 import { Eyebrow } from "@/components/layout/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
-import { ScrollScale } from "@/components/motion/ScrollScale";
 import { cdn } from "@/lib/cdn";
 
 const nav = ["Servicios", "Proyectos", "Proceso", "Equipo", "Contacto"];
@@ -17,8 +16,8 @@ const legal = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-ink text-paper pt-24 md:pt-32 pb-10 overflow-x-clip">
-      <div className="pointer-events-none absolute inset-0 -z-0 opacity-[0.08] mix-blend-screen">
+    <footer className="relative isolate bg-ink text-paper pt-24 md:pt-32 pb-10 overflow-x-clip">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] mix-blend-screen">
         <Image
           src={cdn("/media/luis-desiro-w5g1TpAMD4I-unsplash.jpg")}
           alt=""
@@ -27,9 +26,9 @@ export function Footer() {
           className="object-cover object-right"
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 -z-0 bg-gradient-to-r from-ink via-ink/95 to-ink/70" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-ink via-ink/95 to-ink/70" />
       <Container>
-        <ScrollScale from={0.6} to={1.15} fromOpacity={0.2} toOpacity={1}>
+        <Reveal y={20} scale={0.9}>
           <h2
             className="flex items-center justify-center gap-[0.12em] font-display font-semibold text-center leading-none tracking-[-0.05em] mb-16 md:mb-24 text-paper"
             style={{ fontSize: "clamp(4rem, 18vw, 13rem)" }}
@@ -40,7 +39,7 @@ export function Footer() {
             />
             flujoo.
           </h2>
-        </ScrollScale>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-10 pt-10">
           <Reveal className="flex flex-col gap-4">
